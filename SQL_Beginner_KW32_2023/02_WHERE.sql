@@ -69,3 +69,4 @@ SELECT * FROM Customers
 WHERE Fax IS NULL
 
 --NULL bedeutet kein Wert vorhanden; nicht das selbe wie '', ' ' (Leerzeichen/Whitespace)
+
