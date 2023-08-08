@@ -8,7 +8,11 @@ SELECT Spalten FROM TabelleA
 JOIN TabelleB ON TabelleA.SpalteA = TabelleB.SpalteB
 */
 
+/*************************************/
+
 --INNER JOINs:
+
+/*************************************/
 
 SELECT CompanyName, Orders.* FROM Customers
 INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
@@ -32,8 +36,11 @@ SELECT * FROM Customers as c
 JOIN Orders as o ON c.CustomerID = o.CustomerID
 JOIN [Order Details] as od ON o.OrderID = od.OrderID
 
+/*************************************/
 
 --OUTER JOINs:
+
+/*************************************/
 
 --LEFT JOIN
 
@@ -68,8 +75,11 @@ FROM Customers FULL OUTER JOIN Orders ON Customers.CustomerID = Orders.CustomerI
 SELECT * FROM Customers
 CROSS JOIN Orders
 
+/*************************************/
 
 --Übungen:
+
+/*************************************/
 
 --1. Alle Bestellungen von Kunden aus Brasilien
 SELECT * FROM Customers

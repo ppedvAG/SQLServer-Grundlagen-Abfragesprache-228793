@@ -15,24 +15,26 @@ Tag1:
 -WHERE Filter
 -LIKE
 -Joins
--Systemfunktionen (Datum, Strings usw.)
--CASE
+-Datentypen
+
 
 Tag2:
--Datenbanken 101, Normalisierung usw.
--Datentypen
+-(Datenbanken 101, Normalisierung usw.)
+-Systemfunktionen (Datum, Strings usw.)
 -Aggregatfunktionen & GROUP BY
 -Views
 -Temporäre Tabellen
 
 Tag3:
+-CASE
 -INSERT/UPDATE/DELETE/CREATE
 -Transaction Basics
--(CTEs)
--Stored Procedures
+-Unterabfragen
 -Variablen
--Funktionen
--WHILE
--IF
+-Stored Procedures
+-(Funktionen)
+-(WHILE)
+-(IF)
+-(CTEs)
 
 */

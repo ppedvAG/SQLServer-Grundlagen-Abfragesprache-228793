@@ -39,13 +39,23 @@ SELECT CustomerID, City, Country FROM Customers --mehrere Spalten mit , trennen
 SELECT City, Country, CustomerID FROM Customers --Reihenfolge ist benutzerdefiniert
 
 
+/*************************************/
+
 --Aliase: verändern den angezeigten Spaltennamen
 
+/*************************************/
+
 SELECT 100 as Nummer
-SELECT CustomerID as KundenID, City as Stadt, Country as Land FROM Customers
+SELECT CustomerID as KundenID, City as Stadt, Country Land FROM Customers --as ist optional
 
 --Aliase auch für Tabellennamen:
 SELECT * FROM Customers as Kunden
+
+/*************************************/
+
+-- TOP X
+
+/*************************************/
 
 --Nur X Zeilen im Ergebnis anzeigen mit SELECT TOP X:
 
@@ -53,6 +63,12 @@ SELECT TOP 10 * FROM Customers
 SELECT TOP 10 PERCENT * FROM Orders
 
 --SELECT BOT/BOTTOM existiert nicht, für unterste X Zeilen müssen wir die Sortierung "umdrehen":
+
+/*************************************/
+
+--ORDER BY
+
+/*************************************/
 
 SELECT * FROM Customers
 ORDER BY Country --ORDER BY Spaltenname(n); steht IMMER ganz am Ende einer Abfrage
@@ -69,6 +85,12 @@ SELECT CompanyName, City, Country FROM Customers
 ORDER BY Country DESC, City --mehrere Spalten möglich; DESC/ASC muss für jede Spalte definiert werden
 
 
+/*************************************/
+
+--DISTINCT
+
+/*************************************/
+
 --Identische Datensätze rausfiltern mit SELECT DISTINCT:
 SELECT DISTINCT Country FROM Customers
 
@@ -76,5 +98,6 @@ SELECT DISTINCT * FROM Customers
 
 SELECT DISTINCT Country, City FROM Customers
 
-
+--DISTINCT & TOP zusammen:
+SELECT DISTINCT TOP 10 Country FROM Customers
 

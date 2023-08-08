@@ -1,4 +1,8 @@
+/*************************************/
+
 --UNION: legt mehrere Ergebnistabellen vertikal aneinander
+
+/*************************************/
 
 SELECT * FROM Customers
 UNION --hat ein eingebautes DISTINCT
@@ -26,15 +30,22 @@ UNION ALL
 SELECT UnitPrice FROM [Order Details]
 ORDER BY Quantity
 
+/*************************************/
 
 --INTERSECT: "Welche Gemeinsamkeiten" haben die 2 Ergebnistabellen"
+
+/*************************************/
 
 SELECT Country FROM Customers
 WHERE Country = 'Brazil'
 INTERSECT
 SELECT Country FROM Customers
 
+/*************************************/
+
 --EXCEPT: "Alles von Abfrage 1 AUSSER das was in Abfrage 2 ebenfalls vorkommt"
+
+/*************************************/
 
 SELECT Country FROM Customers
 EXCEPT

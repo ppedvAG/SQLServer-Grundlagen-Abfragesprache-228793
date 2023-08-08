@@ -2,7 +2,11 @@
 
 Arten von Datentypen:
 
+/*************************************/
+
 Numerische:
+
+/*************************************/
 
 Ganzzahlen:
 tinyint = bis 255
@@ -19,8 +23,12 @@ bit: 1/0
 
 binary: Binärzahl
 
+/*************************************/
 
 String/Charakter-Datentypen:
+
+/*************************************/
+
 char(10) = 'Otto      '
 nchar()
 varchar(20) = 'Otto'; maximal 8000
@@ -32,8 +40,12 @@ nvarchar(MAX)
 
 text (legacy), image (legacy)
 
+/*************************************/
 
 Datum/Zeit:
+
+/*************************************/
+
 date: YYYY.MM.DD
 time: HH:MM:SS.MS
 datetime: date + time, bis MS Bereich

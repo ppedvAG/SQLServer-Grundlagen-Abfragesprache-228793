@@ -4,6 +4,8 @@ WHERE Keyword
 - über boolsche Vergleichsoperatoren wird Ergebnismenge gefiltert
 - möglich sind =, <, >, <=, >=, != (ungleich)
 */
+USE Northwind
+
 
 SELECT * FROM Customers
 WHERE Country = 'Germany'

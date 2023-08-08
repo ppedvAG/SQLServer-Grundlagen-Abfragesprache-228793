@@ -31,3 +31,13 @@ WHERE PostalCode LIKE '[0-5]%'
 
 SELECT * FROM Customers
 WHERE ContactTitle LIKE '%Manager%'
+
+--Hochkomma im LIKE:
+SELECT * FROM Customers
+WHERE CompanyName LIKE '%''%'
+
+--%-Zeichen suchen im LIKE:
+SELECT * FROM Customers
+WHERE CompanyName LIKE '%%%'
+
+
