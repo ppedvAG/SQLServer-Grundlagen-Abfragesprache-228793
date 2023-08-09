@@ -1,4 +1,8 @@
+/*************************************/
+
 --(System-) Aggregatfunktionen: grundsätzlich 5 Stück in SQL
+
+/*************************************/
 
 SELECT SUM(Freight), AVG(Freight), COUNT(Freight), COUNT(*), MIN(Freight), MAX(Freight) FROM Orders
 
@@ -10,8 +14,15 @@ SELECT AVG(Freight), SUM(Freight) / COUNT(Freight) FROM Orders
 --"Problem": Für jeden Kunden die gesamten Freightkosten auswerten:
 SELECT CustomerID, SUM(Freight) as FreightSumme FROM Orders
 
---Lösung: GROUP BY - syntaktisch immer nach dem WHERE
+--Lösung: GROUP BY 
+
+/*************************************/
+
+--GROUP BY - syntaktisch immer nach dem WHERE
 --Merke: Alles was im SELECT steht, und keine Aggregatfunktion ist, MUSS ins GROUP BY
+
+/*************************************/
+
 
 SELECT CustomerID, SUM(Freight) as FreightSumme FROM Orders
 --WHERE
@@ -63,6 +74,7 @@ GROUP BY OrderID
 
 --Ergebnisse filtern: Nur "Rechnungen" über 1000€ anzeigen:
 
+--Mit WHERE nicht möglich:
 SELECT OrderID, 
 CAST(SUM(UnitPrice * Quantity * (1 - Discount)) as decimal(10,2)) as SummeBestPosi,
 ROUND(SUM(UnitPrice * Quantity * (1 - Discount)),2) as RoundWert
@@ -70,8 +82,15 @@ FROM [Order Details]
 WHERE SUM(UnitPrice * Quantity * (1 - Discount)) > 1000
 GROUP BY OrderID
 
+--Lösung:
+
+/*************************************/
+
+--HAVING
 --Filtern von gruppierten Werten nur im HAVING möglich; syntaktisch direkt nach GROUP BY
 --Funktioniert ansonsten genauso wie WHERE (>,<,!= usw..)
+
+/*************************************/
 
 SELECT OrderID, 
 CAST(SUM(UnitPrice * Quantity * (1 - Discount)) as decimal(10,2)) as SummeBestPosi,
@@ -87,4 +106,5 @@ SELECT CompanyName, Country, COUNT(OrderID) as AnzBest FROM Customers as c
 JOIN Orders as o ON c.CustomerID = o.CustomerID
 GROUP BY CompanyName, Country
 HAVING Country = 'Germany' --hätte auch im WHERE gefiltert werden können, macht unnötig Arbeit für den Server
+
 

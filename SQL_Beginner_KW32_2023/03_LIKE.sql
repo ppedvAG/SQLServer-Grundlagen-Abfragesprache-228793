@@ -38,6 +38,6 @@ WHERE CompanyName LIKE '%''%'
 
 --%-Zeichen suchen im LIKE:
 SELECT * FROM Customers
-WHERE CompanyName LIKE '%%%'
+WHERE CompanyName LIKE '%[%]%'
 
 

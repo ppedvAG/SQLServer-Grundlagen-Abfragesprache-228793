@@ -1,5 +1,5 @@
 --"MasterView" erstellen mit allen Rechnungsdaten:
-
+USE Northwind
 CREATE VIEW vMaster AS
 
 SELECT 
@@ -40,3 +40,28 @@ JOIN Orders ON vMaster.OrderID = Orders.OrderID
 --Nützlich für Rechteverwaltung: Auf Views können andere Zugriffsrechte vergeben werden als auf die Ursprungstabellen
 
 --mit STRG+SHIFT+R werden Datenbankobjekte "aktualisiert" (für IntelliSense etc.)
+
+
+
+CREATE VIEW vMaster AS
+
+SELECT 
+Customers.CompanyName, Customers.CustomerID, Customers.Country, Customers.City,
+Orders.OrderID, Orders.OrderDate, Orders.Freight, 
+Employees.LastName, 
+Products.ProductName, 
+[Order Details].Quantity, [Order Details].UnitPrice, [Order Details].Discount, 
+Categories.CategoryName,
+CAST(SUM([Order Details].UnitPrice * Quantity * (1 - Discount)) as decimal(10,2)) as SummeBestellPosi
+FROM Customers INNER JOIN
+Orders ON Customers.CustomerID = Orders.CustomerID INNER JOIN
+Employees ON Orders.EmployeeID = Employees.EmployeeID INNER JOIN
+[Order Details] ON Orders.OrderID = [Order Details].OrderID INNER JOIN
+Products ON [Order Details].ProductID = Products.ProductID INNER JOIN
+Categories ON Products.CategoryID = Categories.CategoryID
+GROUP BY Customers.CompanyName, Customers.CustomerID, Customers.Country, Customers.City,
+Orders.OrderID, Orders.OrderDate, Orders.Freight, 
+Employees.LastName, 
+Products.ProductName, 
+[Order Details].Quantity, [Order Details].UnitPrice, [Order Details].Discount, 
+Categories.CategoryName

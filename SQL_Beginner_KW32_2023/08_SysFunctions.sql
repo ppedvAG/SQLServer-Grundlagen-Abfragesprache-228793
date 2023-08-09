@@ -81,6 +81,10 @@ SELECT DATEPART(WEEKDAY, '20230812'), DATENAME(WEEKDAY, '20230812')
 SELECT CAST(OrderDate as date), OrderDate FROM Orders
 --Ändert Ausgabe in neuen Datentyp
 
+SELECT REPLACE('19970101_001500', '_', ' ')
+SELECT CAST(STUFF(STUFF(REPLACE('19970101_001500', '_', ' ') , 12,0,':'), 15, 0, ':') as datetime)
+SELECT CAST('19970101 001500' as datetime)
+
 SELECT CONVERT(date, OrderDate) FROM Orders
 
 SELECT ISNULL(Fax, 'n/a') FROM Customers

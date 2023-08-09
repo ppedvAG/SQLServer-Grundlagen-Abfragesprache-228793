@@ -6,6 +6,7 @@ Werden "erstellt" indem man vor dem FROM einer Abfrage ein INTO #TempTableName s
 Nachteil: u.U. veraltete Daten, da Abfrage nicht wie bei einer View neu ausgeführt wird
 Vorteil: Performancetechnisch sehr schnell, da Ergebnisse nur einmal generiert werden müssen
 Sind nur innerhalb der Session (SkriptFenster) existent
+Werden in Systemdatenbank "tempdb" abgelegt
 
 Auch nützlich um komplexe Abfragen zu "zerstückeln" --> Zwischenergebnisse in #Table wegspeichern
 */
@@ -30,3 +31,26 @@ SELECT AVG(Summe) FROM #Avg
 -- ##Table ist "global": auch in anderen Sessions verfügbar; bis manuell gelöscht wird, oder Server tempdb wiped
 
 SELECT * INTO ##GlobaleTempTable FROM Customers
+
+
+--#Table verhält sich genauso wie ein "normaler" Table, d.h. INSERT/UPDATE/DELETE JOINS etc alles möglich
+
+SELECT * INTO #t FROM Customers
+WHERE Country = 'Germany'
+
+INSERT INTO #t 
+SELECT * FROM Customers
+WHERE Country = 'France'
+
+SELECT * FROM #t
+
+/**************************/
+
+USE Northwind
+
+DROP TABLE IF EXISTS #t1 --IF EXISTS erst seit SQL SERVER Version 2019
+DROP TABLE IF EXISTS #t2
+DROP TABLE IF EXISTS #t3
+SELECT * INTO #t2 FROM Customers
+
+SELECT * FROM #t2

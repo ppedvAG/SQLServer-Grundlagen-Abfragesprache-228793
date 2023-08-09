@@ -37,4 +37,9 @@ Tag3:
 -(IF)
 -(CTEs)
 
+Microsoft SQL Server verwendet TSQL (Transact)
+MySQL, POSTGRES, 
+
+
+
 */
